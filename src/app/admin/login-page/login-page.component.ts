@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../shared/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +15,10 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup;
   submitted = false;
 
-  constructor() {
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -24,10 +29,26 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit() {
+    if (this.form.invalid) {
+      return;
+    }
+    this.submitted = true;
 
+    const user = {
+      email: this.form.value.email,
+      password: this.form.value.password,
+      returnSecureToken: true
+    }
+
+    this.auth.login(user).subscribe(res => {
+        console.log(new Date);
+        this.form.reset();
+        this.router.navigate(['/admin', 'dashboard']);
+        this.submitted = true;
+      },
+      () => {
+        this.submitted = false;
+      }
+    )
   }
 }
-
-
-// https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
-// apiKey: "AIzaSyDNgMp0bfvueFAWvrrBAs2odyVTW6mGJbM
