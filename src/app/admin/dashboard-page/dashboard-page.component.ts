@@ -13,6 +13,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   getAllSubscription!: Subscription;
   removeSubscription!: Subscription;
+  productName = '';
 
   constructor(private productService: ProductService) {
   }

@@ -10,6 +10,7 @@ import {EditPageComponent} from './edit-page/edit-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from '../shared/auth.guard';
 import {QuillModule} from 'ngx-quill';
+import { SearchPipe } from './shared/search.pipe';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     DashboardPageComponent,
     AddPageComponent,
     EditPageComponent,
-    OrdersPageComponent
+    OrdersPageComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
