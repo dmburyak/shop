@@ -1,1 +1,61 @@
-<p>edit-page works!</p>
+<h2>Update product</h2>
+
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-control">
+      <label for="type">Product type</label>
+      <select id="type" formControlName="type">
+        <option value="Phone">Phone</option>
+        <option value="Tablet">Tablet</option>
+        <option value="Laptop">Laptop</option>
+      </select>
+
+      <div *ngIf="form.get('type').touched && form.get('type').invalid">
+        <small *ngIf="form.get('type').errors.required">Select product type</small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Product name</label>
+      <input id="name" type="text" formControlName="name">
+
+      <div *ngIf="form.get('name').touched && form.get('name').invalid">
+        <small *ngIf="form.get('name').errors.required">Enter product name</small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label>Product photo</label>
+      <quill-editor formControlName="photo"></quill-editor>
+
+      <div *ngIf="form.get('photo').touched && form.get('photo').invalid">
+        <small *ngIf="form.get('photo').errors.required">Add product photo</small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label>Product info</label>
+      <quill-editor formControlName="info"></quill-editor>
+      <div *ngIf="form.get('info').touched && form.get('info').invalid">
+        <small *ngIf="form.get('info').errors.required">Enter product info</small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="price">Product price</label>
+      <input id="price" type="text" formControlName="price">
+
+      <div *ngIf="form.get('price').touched && form.get('price').invalid">
+        <small *ngIf="form.get('price').errors.required">Enter product price</small>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="form.invalid || submitted">Update</button>
+
+  </form>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

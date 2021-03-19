@@ -56,4 +56,5 @@ export class AddPageComponent implements OnInit {
         )
     }
   }
+
 }

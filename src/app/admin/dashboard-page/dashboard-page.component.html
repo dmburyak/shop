@@ -17,7 +17,7 @@
       <td>{{ idx + 1 }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
-      <td>{{ product.date }}</td>
+      <td>{{ product.date | date : 'short' }}</td>
       <td>
         <button class="btn btn-dark" [routerLink]="['/admin', 'product', product.id, 'edit']"
         >Open
