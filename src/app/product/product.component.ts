@@ -11,10 +11,15 @@ export class ProductComponent implements OnInit {
 
   @Input() product;
 
-  constructor() {
+  constructor(
+    private productService: ProductService
+  ) {
   }
 
   ngOnInit(): void {
   }
 
+  addProduct(product: any) {
+    this.productService.addProduct(product);
+  }
 }

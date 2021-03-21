@@ -10,8 +10,9 @@ import {CartPageComponent} from './cart-page/cart-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {QuillModule} from 'ngx-quill';
 import {AuthInterceptor} from './shared/auth.interceptor';
-import { ProductComponent } from './product/product.component';
-import { SortingPipe } from './shared/sorting.pipe';
+import {ProductComponent} from './product/product.component';
+import {SortingPipe} from './shared/sorting.pipe';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,8 @@ import { SortingPipe } from './shared/sorting.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     QuillModule.forRoot()
   ],
   providers: [{

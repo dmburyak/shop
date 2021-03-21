@@ -10,6 +10,6 @@
 
   <button class="btn btn-dark" [routerLink]="['/product', product.id]">Open</button>
 
-  <button class="btn btn-dark" [routerLink]="['/cart']">Add to Cart</button>
+  <button class="btn btn-dark" [routerLink]="['/cart']" (click)="addProduct(product)">Add to Cart</button>
 
 </div>
