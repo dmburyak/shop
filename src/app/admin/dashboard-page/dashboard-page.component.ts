@@ -22,7 +22,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.productService.getAll().subscribe(
       (products) => {
         this.products = products;
-        console.log(this.products);
       })
   }
 
